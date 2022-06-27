@@ -1,0 +1,3 @@
+# Luxter
+
+A discord bot

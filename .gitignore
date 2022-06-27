@@ -1,0 +1,7 @@
+.env
+node_modules
+.vscode
+.prettierignore
+.prettierrc.json
+models
+package-lock.json
