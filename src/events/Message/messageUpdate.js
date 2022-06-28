@@ -14,9 +14,7 @@ export default new Event({
         if (!channel || !channel.viewable || !channel.permissionsFor(oldMessage.guild.me).has("SEND_MESSAGES")) return
 
         if (data.logs.message.actived) {
-
             if (oldMessage.content !== newMessage.content) {
-
                 const embed = new Discord.MessageEmbed()
                     .setAuthor({name: `Message edited | ${oldMessage.guild.name}`, iconURL: oldMessage.guild.iconURL()})
                     .setColor("FF335B")

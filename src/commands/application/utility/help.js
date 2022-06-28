@@ -132,26 +132,36 @@ export default new Command.ApplicationCommand({
                     })
                 }
             })
-
         } else {
-
             const getCommand = bot.ApplicationCommand.get(command)
 
             if (!getCommand) return interaction.reply("Command not found")
 
             const embed = new Discord.MessageEmbed()
-            .setAuthor({ name: `${getCommand.name}`, iconURL: bot.user.avatarURL })
-            .setDescription(getCommand.description)
-            .setColor(interaction.guild.me.displayHexColor)
-            .addField("Command", `${Discord.Formatters.codeBlock("", getCommand.name)}`, true)
-            .addField("Category", `${Discord.Formatters.codeBlock("", getCommand.category)}`, true)
-            .addField("_ _", "_ _", true)
-            .addField("Permissions", `${Discord.Formatters.codeBlock("", `User: ${getCommand.permissions?.user || "None"}\nBot: ${getCommand.permissions?.bot || "None"}`)}`, true)
-            .addField("Usage", Discord.Formatters.codeBlock("", getCommand.options ? getCommand.options.map((x) => `/${getCommand.name} ${x.name}`).join(" ") : "No options"), true)
+                .setAuthor({name: `${getCommand.name}`, iconURL: bot.user.avatarURL})
+                .setDescription(getCommand.description)
+                .setColor(interaction.guild.me.displayHexColor)
+                .addField("Command", `${Discord.Formatters.codeBlock("", getCommand.name)}`, true)
+                .addField("Category", `${Discord.Formatters.codeBlock("", getCommand.category)}`, true)
+                .addField("_ _", "_ _", true)
+                .addField(
+                    "Permissions",
+                    `${Discord.Formatters.codeBlock(
+                        "",
+                        `User: ${getCommand.permissions?.user || "None"}\nBot: ${getCommand.permissions?.bot || "None"}`
+                    )}`,
+                    true
+                )
+                .addField(
+                    "Usage",
+                    Discord.Formatters.codeBlock(
+                        "",
+                        getCommand.options ? getCommand.options.map((x) => `/${getCommand.name} ${x.name}`).join(" ") : "No options"
+                    ),
+                    true
+                )
 
-            interaction.reply({ embeds: [embed] })
-
+            interaction.reply({embeds: [embed]})
         }
-
     }
 })
