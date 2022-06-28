@@ -230,10 +230,10 @@ export default new Command.ApplicationCommand({
                 })
             }
 
-            const roles = data.roles.map((r) => interaction.guild.roles.get(r.role))
+            const roles = data.roles.map((r) => interaction.guild.roles.cache.get(r.role))
 
             interaction.reply({
-                content: `✅ | The roles added to the welcome are \n${Discord.Formatters.codeBlock("", `${roles.map((r) => r.name).join(", ")}`)}}`
+                content: `✅ | The roles added to the welcome are \n${Discord.Formatters.codeBlock("", `${roles.map((r) => r.name).join(", ")}`)}`
             })
         }
     }
