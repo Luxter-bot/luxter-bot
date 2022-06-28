@@ -176,9 +176,11 @@ export default new Command.ApplicationCommand({
             if (!data) {
                 new welcome({
                     _id: interaction.guild.id,
-                    roles: [{
-                        role: role.id
-                    }]
+                    roles: [
+                        {
+                            role: role.id
+                        }
+                    ]
                 }).save()
             } else {
                 data.roles.push({
@@ -203,7 +205,7 @@ export default new Command.ApplicationCommand({
                 })
             }
 
-            const index = data.roles.findIndex(r => r.role === role.id)
+            const index = data.roles.findIndex((r) => r.role === role.id)
 
             if (index === -1) {
                 return interaction.reply({
@@ -228,10 +230,10 @@ export default new Command.ApplicationCommand({
                 })
             }
 
-            const roles = data.roles.map(r => interaction.guild.roles.get(r.role))
+            const roles = data.roles.map((r) => interaction.guild.roles.get(r.role))
 
             interaction.reply({
-                content: `✅ | The roles added to the welcome are \n${Discord.Formatters.codeBlock("", `${roles.map(r => r.name).join(", ")}`)}}`
+                content: `✅ | The roles added to the welcome are \n${Discord.Formatters.codeBlock("", `${roles.map((r) => r.name).join(", ")}`)}}`
             })
         }
     }

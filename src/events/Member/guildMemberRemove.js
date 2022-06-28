@@ -1,6 +1,6 @@
 import Discord from "discord.js"
 import {Event} from "mitim"
-import moment from 'moment'
+import moment from "moment"
 import Logs from "../../schemas/logs.js"
 
 export default new Event({
