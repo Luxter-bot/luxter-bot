@@ -39,14 +39,14 @@ export default new Command.ApplicationCommand({
                 "Creator Information",
                 Discord.Formatters.codeBlock(
                     "md",
-                    `# Github: https://github.com/xTheSebaSx-afk/Luxter\n# Id: 493456079531933708\n# Username: ! xTheSebaSx#7432\n# Twitter: https://twitter.com/xTheSebaSx1`
+                    `# Github: https://github.com/Luxter-bot/luxter-bot\n# Id: 493456079531933708\n# Username: ! xTheSebaSx#7432\n# Twitter: https://twitter.com/xTheSebaSx1`
                 )
             )
             .setThumbnail(bot.user.avatarURL())
 
         const row = new Discord.MessageActionRow().addComponents(
             new Discord.MessageButton().setURL("https://discord.gg/dAeYtXY4Q3").setLabel("Support server").setStyle("LINK"),
-            new Discord.MessageButton().setURL("https://github.com/xTheSebaSx-afk/Luxter").setLabel("Github Repository").setStyle("LINK"),
+            new Discord.MessageButton().setURL("https://github.com/Luxter-bot/luxter-bot").setLabel("Github Repository").setStyle("LINK"),
             new Discord.MessageButton()
                 .setURL(`https://discordapp.com/oauth2/authorize?client_id=${bot.user.id}&scope=bot%20applications.commands&permissions=8`)
                 .setLabel("Invite me")
