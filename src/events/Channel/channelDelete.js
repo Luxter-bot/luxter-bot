@@ -30,7 +30,7 @@ export default new Event({
                 .setDescription(`A channel has been deleted (${channel})`)
                 .addField("Channel", `${Discord.Formatters.codeBlock("", `${channel.name} (${channel.id})`)}`)
                 .addField("Type", `${Discord.Formatters.codeBlock("", channelType[channel.type])}`, true)
-                .addField("Parent", `${Discord.Formatters.codeBlock("", `${channel.parent.name} (${channel.parent.id})`)}`, true)
+                .addField("Parent", `${Discord.Formatters.codeBlock("", `${channel.parent?.name || "Without parent"} (${channel.parent?.id || ""})`)}`, true)
                 .addField(
                     "Created at",
                     `${Discord.Formatters.codeBlock(

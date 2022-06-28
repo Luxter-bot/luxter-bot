@@ -72,7 +72,11 @@ export default new Command.ApplicationCommand({
                     content: "❌ | I can't add this role, it's higher or equal to my highest role"
                 })
 
-            const getEmoji = Discord.Util.parseEmoji(emoji)
+            let getEmoji;
+
+            if(emoji){
+                getEmoji = Discord.Util.parseEmoji(emoji)
+            }
 
             if (getEmoji && !getEmoji.id)
                 return interaction.reply({
