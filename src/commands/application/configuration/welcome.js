@@ -167,5 +167,72 @@ export default new Command.ApplicationCommand({
 
             interaction.showModal(modal)
         }
+
+        if (option === "add") {
+            const role = interaction.options.getRole("role")
+
+            const data = await welcome.findOne({_id: interaction.guild.id})
+
+            if (!data) {
+                new welcome({
+                    _id: interaction.guild.id,
+                    roles: [{
+                        role: role.id
+                    }]
+                }).save()
+            } else {
+                data.roles.push({
+                    role: role.id
+                })
+                data.save()
+            }
+
+            interaction.reply({
+                content: `✅ | The role ${role} has been added to the welcome`
+            })
+        }
+
+        if (option === "remove") {
+            const role = interaction.options.getRole("role")
+
+            const data = await welcome.findOne({_id: interaction.guild.id})
+
+            if (!data) {
+                return interaction.reply({
+                    content: `❌ | There is no welcome set for this server`
+                })
+            }
+
+            const index = data.roles.findIndex(r => r.role === role.id)
+
+            if (index === -1) {
+                return interaction.reply({
+                    content: `❌ | The role ${role} is not added to the welcome`
+                })
+            }
+
+            data.roles.splice(index, 1)
+            data.save()
+
+            interaction.reply({
+                content: `✅ | The role ${role} has been removed from the welcome`
+            })
+        }
+
+        if (option === "list") {
+            const data = await welcome.findOne({_id: interaction.guild.id})
+
+            if (!data) {
+                return interaction.reply({
+                    content: `❌ | There is no welcome set for this server`
+                })
+            }
+
+            const roles = data.roles.map(r => interaction.guild.roles.get(r.role))
+
+            interaction.reply({
+                content: `✅ | The roles added to the welcome are \n${Discord.Formatters.codeBlock("", `${roles.map(r => r.name).join(", ")}`)}}`
+            })
+        }
     }
 })
