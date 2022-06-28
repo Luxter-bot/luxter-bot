@@ -1,5 +1,6 @@
 import Discord from "discord.js"
 import {Event} from "mitim"
+import moment from 'moment'
 import Logs from "../../schemas/logs.js"
 
 export default new Event({
@@ -23,7 +24,7 @@ export default new Event({
                     "Member joined at",
                     `${Discord.Formatters.codeBlock(
                         "",
-                        `<t:${Math.floor(member.joinedTimestamp / 1000)}:D> <t:${Math.floor(member.joinedTimestamp / 1000)}:R>`
+                        `${moment(member.joinedAt).format("DD/MM/YYYY HH:mm:ss")} (${moment(member.joinedAt).fromNow()}`
                     )}`,
                     true
                 )
@@ -31,11 +32,11 @@ export default new Event({
                     "Member created at",
                     `${Discord.Formatters.codeBlock(
                         "",
-                        `<t:${Math.floor(member.user.createdTimestamp / 1000)}:D> <t:${Math.floor(member.user.createdTimestamp / 1000)}:R>`
+                        `${moment(member.user.joinedAt).format("DD/MM/YYYY HH:mm:ss")} (${moment(member.user.joinedAt).fromNow()}`
                     )}`,
                     true
                 )
-                .addField("Roles", `${Discord.Formatters.codeBlock("", member.roles.cache.map((r) => `${r.name} (${r.id})`).join(", "))}`, true)
+                .addField("Roles", `${Discord.Formatters.codeBlock("", member.roles.cache.map((r) => `${r.name} (${r.id})`).join(", "))}`)
                 .setTimestamp()
 
             channel.send({embeds: [embed]})
