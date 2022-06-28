@@ -6,7 +6,7 @@ export default new Event({
     run: async (bot) => {
         bot.guilds.cache.forEach((guild) => {
             bot.ApplicationCommand.forEach(async (command) => {
-                await guild.commands.create(command).catch(() => {})
+                await guild.commands.create(command)
             })
         })
 
