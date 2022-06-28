@@ -8,6 +8,9 @@ export default new Event({
             const afkData = await afk.findOne({guildId: message.guild.id, userId: message.mentions.users.first()?.id})
 
             if (afkData) {
+
+                if(message.author.bot) return;
+
                 return message.reply({
                     content: `❗ | This user has been afk for **${afkData.reason}**\n> Afk ${afkData.time.toLocaleString()} ago`
                 })
