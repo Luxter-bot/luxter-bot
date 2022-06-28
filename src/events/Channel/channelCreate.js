@@ -30,7 +30,7 @@ export default new Event({
                 .setDescription(`A channel has been created (${channel})`)
                 .addField("Channel", `${Discord.Formatters.codeBlock("", `${channel.name} (${channel.id})`)}`)
                 .addField("Type", `${Discord.Formatters.codeBlock("", channelType[channel.type])}`, true)
-                .addField("Parent", `${Discord.Formatters.codeBlock("", `${channel.parent.name} (${channel.parent.id})`)}`, true)
+                .addField("Parent", `${Discord.Formatters.codeBlock("", `${channel.parent?.name || "Without parent"} (${channel.parent?.id || ""})`)}`, true)
                 .addField("Position", `${Discord.Formatters.codeBlock("", channel.position)}`, true)
                 .addField(
                     "Permission Overwrites",
