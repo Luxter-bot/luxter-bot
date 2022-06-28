@@ -26,6 +26,8 @@ fs.readdirSync("./src/events").forEach(async (folder) => {
     })
 })
 
-process.on("uncaughtException", (err) => console.log(err))
+process.on("uncaughtException", (err) => {
+    console.log(err)
+})
 
 bot.login(process.env.DISCORD_TOKEN)
