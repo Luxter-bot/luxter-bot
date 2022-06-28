@@ -171,8 +171,8 @@ export default new Event({
                                     (x) =>
                                         `- ${
                                             oldChannel.guild.roles.cache.get(x.id)
-                                                ? `${oldChannel.guild.roles.cache.get(x.id).name}`
-                                                : `${oldChannel.guild.users.cache.get(x.id).tag}`
+                                                ? `${oldChannel.guild.roles?.cache.get(x.id).name}`
+                                                : `${oldChannel.guild.users?.cache.get(x.id).tag}`
                                         }:\nDenied: ${
                                             x.deny
                                                 .toArray()
