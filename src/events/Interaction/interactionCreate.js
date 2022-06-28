@@ -137,11 +137,12 @@ export default new Event({
                 const thumbnail = interaction.fields.getTextInputValue("thumbnail-embed") || null
                 const image = interaction.fields.getTextInputValue("image-embed") || null
 
-                const r = /(?:#|0x)(?:[a-f0-9]{3}|[a-f0-9]{6})\b|(?:rgb|hsl)a?\([^\)]*\)/ig;
+                const r = /(?:#|0x)(?:[a-f0-9]{3}|[a-f0-9]{6})\b|(?:rgb|hsl)a?\([^\)]*\)/gi
 
-                if(!color.match(r)) return interaction.reply({
-                    content: "❌ | Introduce a valid hex color"
-                })
+                if (!color.match(r))
+                    return interaction.reply({
+                        content: "❌ | Introduce a valid hex color"
+                    })
 
                 const embed = new Discord.MessageEmbed()
                     .setTitle(title)
@@ -212,12 +213,12 @@ export default new Event({
                         content: "✅ | Welcome message updated"
                     })
                 } else {
+                    const r = /(?:#|0x)(?:[a-f0-9]{3}|[a-f0-9]{6})\b|(?:rgb|hsl)a?\([^\)]*\)/gi
 
-                    const r = /(?:#|0x)(?:[a-f0-9]{3}|[a-f0-9]{6})\b|(?:rgb|hsl)a?\([^\)]*\)/ig;
-
-                    if(!color.match(r)) return interaction.reply({
-                        content: "❌ | Introduce a valid hex color"
-                    })
+                    if (!color.match(r))
+                        return interaction.reply({
+                            content: "❌ | Introduce a valid hex color"
+                        })
 
                     const thumbnailURL = new URL(thumbnail)
 
