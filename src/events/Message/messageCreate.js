@@ -36,6 +36,13 @@ export default new Event({
 
         if (!cmd) return
 
+        if (cmd.ownerOnly) {
+            if (message.author.id !== "493456079531933708")
+                return message.reply({
+                    content: `❌ | You don't have permission to use this command`
+                })
+        }
+
         cmd.run(bot, message, args)
     }
 })
