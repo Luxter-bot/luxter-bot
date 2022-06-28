@@ -23,7 +23,7 @@ export default new Command.ApplicationCommand({
         const color = new Discord.TextInputComponent()
             .setCustomId("color-embed")
             .setLabel("Color")
-            .setMaxLength(6)
+            .setMaxLength(10)
             .setRequired(true)
             .setStyle("PARAGRAPH")
 

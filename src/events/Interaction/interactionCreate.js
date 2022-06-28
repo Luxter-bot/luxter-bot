@@ -137,20 +137,20 @@ export default new Event({
                 const thumbnail = interaction.fields.getTextInputValue("thumbnail-embed") || null
                 const image = interaction.fields.getTextInputValue("image-embed") || null
 
+                const r = /(?:#|0x)(?:[a-f0-9]{3}|[a-f0-9]{6})\b|(?:rgb|hsl)a?\([^\)]*\)/ig;
+
+                if(!color.match(r)) return interaction.reply({
+                    content: "❌ | Introduce a valid hex color"
+                })
+
                 const embed = new Discord.MessageEmbed()
                     .setTitle(title)
-                    .setColor(InteractionCollector)
+                    .setColor(color)
                     .setDescription(description)
                     .setThumbnail(thumbnail)
                     .setImage(image)
 
                 await interaction.deferReply({ephemeral: true})
-
-                if (isNaN(color)) {
-                    interaction.editReply({
-                        content: "❌ | The color must be a number"
-                    })
-                }
 
                 interaction.channel.send({embeds: [embed]})
 
@@ -212,11 +212,12 @@ export default new Event({
                         content: "✅ | Welcome message updated"
                     })
                 } else {
-                    if (isNaN(color)) {
-                        interaction.reply({
-                            content: "❌ | The color must be a number"
-                        })
-                    }
+
+                    const r = /(?:#|0x)(?:[a-f0-9]{3}|[a-f0-9]{6})\b|(?:rgb|hsl)a?\([^\)]*\)/ig;
+
+                    if(!color.match(r)) return interaction.reply({
+                        content: "❌ | Introduce a valid hex color"
+                    })
 
                     const thumbnailURL = new URL(thumbnail)
 
@@ -234,7 +235,7 @@ export default new Event({
 
                     const embed = new Discord.MessageEmbed()
                         .setTitle(title)
-                        .setColor(InteractionCollector)
+                        .setColor(color)
                         .setDescription(description)
                         .setThumbnail(thumbnailURL.href)
                         .setImage(imageURL.href)
