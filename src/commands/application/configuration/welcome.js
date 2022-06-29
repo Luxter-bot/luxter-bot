@@ -84,7 +84,7 @@ export default new Command.ApplicationCommand({
         const option = interaction.options.getSubcommand()
 
         if (option === "channel") {
-            const channel = interaction.options.getChannel("channel") || interaction.channel
+            const channel = interaction.options.getChannel("channel")
 
             if (!channel.viewable)
                 return interaction.reply({
