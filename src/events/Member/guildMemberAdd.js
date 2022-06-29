@@ -14,8 +14,6 @@ export default new Event({
 
             const welcomeRoles = welcomeData.roles.map((r) => member.guild.roles.cache.get(r.role))
 
-            console.log(welcomeRoles)
-
             welcomeRoles.forEach(async (r) => {
                 await member.roles.add(r)
             })
